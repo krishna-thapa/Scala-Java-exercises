@@ -1,6 +1,6 @@
 package udemy.typeClass
 
-import krishna.udemy.typeClass.TypeClasses.User
+import udemy.typeClass.TypeClasses.User
 
 object EqualityPlayground extends App {
 
