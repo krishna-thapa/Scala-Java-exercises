@@ -12,6 +12,11 @@ object PatternMatching extends App {
     def name: String
   }*/
 
+  /*
+  Abstract class vs Trait:
+  https://www.geeksforgeeks.org/difference-between-traits-and-abstract-classes-in-scala/
+  */
+
   sealed abstract class Animal {
     def name: String
   }
