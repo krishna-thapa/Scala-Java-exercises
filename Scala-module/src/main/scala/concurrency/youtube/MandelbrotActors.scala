@@ -1,3 +1,4 @@
+/*
 package concurrency.youtube
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
@@ -90,3 +91,4 @@ object MandelbrotActors extends JFXApp {
   and you can manage the routees yourselves or use a self contained router actor
   with configuration capabilities.
  */
+*/

@@ -1,0 +1,1 @@
+// A class is a template for creaঞng objects that have similar methods and fields.
