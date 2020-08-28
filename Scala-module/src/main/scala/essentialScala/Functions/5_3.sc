@@ -49,6 +49,13 @@ example(2)(3)
 
 sealed trait Tree[A] {
   def fold[B](leaf: A => B)(node: (B, B) => B): B
+
+  def foldTrait[B](leaf: A => B)(node: (B, B) => B): B = {
+    this match {
+      case Leaf(element) => leaf(element)
+      case Node(left, right) => node(left.fold(leaf)(node), right.fold(leaf)(node))
+    }
+  }
 }
 case class Node[A](left: Tree[A], right: Tree[A]) extends Tree[A] {
   def fold[B](leaf: A => B)(node: (B, B) => B): B =
@@ -64,13 +71,24 @@ val tree: Tree[String] =
     Node(Node(Leaf("is"), Leaf("human,")),
       Node(Leaf("to"), Node(Leaf("recurse"), Leaf("divine")))))
 
-val result = tree.fold[String](leaf => leaf)((left, right) => left + " " + right)
+val result: String = tree.fold[String](leaf => leaf)((left, right) => left + " " + right)
 println(result)
+
+val usingTraitMethod: String = tree.foldTrait[String](leaf => leaf)((left, right) => s"$left $right")
+println(usingTraitMethod)
+
+// Fold is returning different type[B]=Int than the one compare to input type[A] = String
+val returnDiffType: Int = tree.foldTrait[Int](leaf => leaf.length)((left, right) => left + right)
+println(returnDiffType)
 
 val sumInt: Tree[Int] =
   Node(Node(Leaf(1), Leaf(2)),
     Node(Node(Leaf(3), Leaf(4)),
       Node(Leaf(5), Node(Leaf(6), Leaf(7)))))
 
-val result2 = sumInt.fold[Int](leaf => leaf)((left, right) => left + right)
+val result2: Int = sumInt.fold[Int](leaf => leaf)((left, right) => left + right)
 println(result2)
+
+// (1-(2-(3-0))) = 2
+val demo:Seq[Int] = Seq(1,2,3)
+demo.foldRight(0)((x,y) => x-y)
