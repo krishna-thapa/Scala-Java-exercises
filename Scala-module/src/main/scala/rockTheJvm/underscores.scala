@@ -39,8 +39,13 @@ object underscores {
   val incrementerFunction = incrementer _  //creating function with x => incrementer(x)
   incrementerFunction(12)
 
-  // 6 - Higher Kind of Types -?
+  // 6 - Higher Kinded Types -?
 
+  /*
+    HKTs are generic types, whose type arguments are themselves generic
+    Where the type argument M is also generic. If I want to instantiate my HKT with a
+    concrete generic type like List, I’ll use the List type (not a List[String] or something else)
+   */
   class HigherKindJewel[M[_]]
   val myJewel = new HigherKindJewel[List]
 
