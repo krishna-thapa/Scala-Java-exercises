@@ -1,18 +1,25 @@
 package essentialScala.Demo
 
 import scala.collection.parallel.CollectionConverters.ImmutableIterableIsParallelizable
-import scala.collection.parallel.immutable.ParVector
 
 object ParCollections extends App {
 
   // Linear collections in Scala
 
   val linearList = List.range(0, 10)
+
   println(s"Linear list $linearList")
-  linearList.foreach(print)
-  val res = linearList.map(_*2)
-  println(res)
-  println()
+
+  //linearList.foreach(print)
+
+
+//  val res = linearList.map{ x =>
+//    Thread.sleep(100);
+//    println(x)
+//    x * 2
+//  }
+//  println(res)
+//  println("drfgsdfg")
 
   // Scala Parallel collections
   // 1. Convert an existing linear collection to a parallel collection
@@ -22,17 +29,19 @@ object ParCollections extends App {
   // using an algorithm that runs concurrently
   parallelList.foreach(print)
   println()
+
+
   val resParallel = parallelList.map { x =>
-    Thread.sleep(100);
+    Thread.sleep(1000);
     println(x)
     x * 2
   }
   println(resParallel)
-  println()
+  //println()
 
   // 2. Create a parallel collection
-  val newParallelList = ParVector.range(0, 10)
-  newParallelList.foreach(print)
+//  val newParallelList = ParVector.range(0, 10)
+//  newParallelList.foreach(print)
 
   // There are both immutable and mutable parallel collections
 
