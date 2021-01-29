@@ -3,9 +3,8 @@ package online
 object PatternMatching extends App {
 
   /*
-  A sealed class/trait is a superclass that is aware of every
-  single class extending it. This behavior is possible using the same single file to express
-  the sealed class and all of its subclasses.
+  A sealed class/trait is a superclass that is aware of every single class extending it.
+  This behavior is possible using the same single file to express the sealed class and all of its subclasses.
    */
 
   /*sealed trait Animal {
