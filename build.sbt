@@ -14,7 +14,7 @@ lazy val `Scala-module` = project
   .settings(
     name := "Scala-module",
     settings,
-    libraryDependencies ++= scalaDependencies
+    libraryDependencies ++= scalaDependencies ++ logging
   )
 
 lazy val dependencies =
@@ -30,6 +30,11 @@ lazy val scalaDependencies = Seq(
   dependencies.parallelColl,
   dependencies.scalafx,
   dependencies.scalaTest
+)
+
+lazy val logging = Seq(
+  "ch.qos.logback" % "logback-classic" % "1.2.3",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
 )
 
 lazy val settings = Seq(
